@@ -69,7 +69,6 @@ public class FillInfosView extends JPanel {
         Button generate = new Button("Générer");
         generate.addActionListener(new ActionListener() {
 
-            @Override
             public void actionPerformed(ActionEvent arg0) {
                 generate();
 
@@ -151,7 +150,6 @@ public class FillInfosView extends JPanel {
         Button addAuthorButton = new Button("Ajouter un auteur");
         addAuthorButton.addActionListener(new ActionListener() {
 
-            @Override
             public void actionPerformed(ActionEvent e) {
                 addAuthor();
             }
@@ -160,7 +158,6 @@ public class FillInfosView extends JPanel {
         Button removeAuthorButton = new Button("Retirer un auteur");
         removeAuthorButton.addActionListener(new ActionListener() {
 
-            @Override
             public void actionPerformed(ActionEvent e) {
                 removeAuthor();
             }
@@ -169,7 +166,6 @@ public class FillInfosView extends JPanel {
         Button addCategoryButton = new Button("Ajouter une catégorie");
         addCategoryButton.addActionListener(new ActionListener() {
 
-            @Override
             public void actionPerformed(ActionEvent e) {
                 addCategory();
             }
@@ -178,7 +174,6 @@ public class FillInfosView extends JPanel {
         Button removeCategoryButton = new Button("Retirer une Categorie");
         removeCategoryButton.addActionListener(new ActionListener() {
 
-            @Override
             public void actionPerformed(ActionEvent e) {
                 removeCategory();
             }
@@ -187,7 +182,6 @@ public class FillInfosView extends JPanel {
         Button addNoteButton = new Button("Ajouter une note");
         addNoteButton.addActionListener(new ActionListener() {
 
-            @Override
             public void actionPerformed(ActionEvent e) {
                 addNote();
             }
@@ -196,7 +190,6 @@ public class FillInfosView extends JPanel {
         Button removeNoteButton = new Button("Retirer une note");
         removeNoteButton.addActionListener(new ActionListener() {
 
-            @Override
             public void actionPerformed(ActionEvent e) {
                 removeNote();
             }
