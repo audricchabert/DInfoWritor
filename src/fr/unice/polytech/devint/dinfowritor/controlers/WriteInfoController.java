@@ -45,13 +45,14 @@ public class WriteInfoController extends JFrame {
 
     public void generate(String year, String title, ArrayList<String> authors,
             ArrayList<String> categories, String shortDescription,
-            String dpublic, ArrayList<String> notes, String gamePlay,
+            String dpublic, String age, ArrayList<String> notes, String gamePlay,
             String gameRules) {
         Element xmlRoot = new Element("infos");
         Element xmlYear = new Element("year");
         Element xmlCategories = new Element("gamecategories");
         Element xmlShortDescription = new Element("shortdescription");
         Element xmlPublic = new Element("public");
+        Element xmlAge = new Element("age");
         Element xmlTitle = new Element("title");
         Element xmlAuthors = new Element("authors");
         Element xmlNotes = new Element("notes");
@@ -66,6 +67,7 @@ public class WriteInfoController extends JFrame {
         }
         xmlShortDescription.setText(shortDescription);
         xmlPublic.setText(dpublic);
+        xmlAge.setText(age);
         xmlTitle.setText(title);
         for (String author : authors) {
             Element xmlAuthor = new Element("author");
@@ -84,6 +86,7 @@ public class WriteInfoController extends JFrame {
         xmlRoot.addContent(xmlCategories);
         xmlRoot.addContent(xmlShortDescription);
         xmlRoot.addContent(xmlPublic);
+        xmlRoot.addContent(xmlAge);
         xmlRoot.addContent(xmlTitle);
         xmlRoot.addContent(xmlAuthors);
         xmlRoot.addContent(xmlNotes);

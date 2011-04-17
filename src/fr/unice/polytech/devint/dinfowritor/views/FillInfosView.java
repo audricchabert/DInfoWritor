@@ -30,6 +30,7 @@ public class FillInfosView extends JPanel {
     private ArrayList<JComboBox> categoriesField;
     private JTextField shortDescriptionField;
     private JComboBox publicField;
+    private JTextField ageField;
     private ArrayList<JTextField> notesField;
     private JTextField gameplayField;
     private JTextField gameRulesField;
@@ -48,6 +49,7 @@ public class FillInfosView extends JPanel {
                 .keySet().toArray()));
         this.shortDescriptionField = new JTextField();
         this.publicField = new JComboBox(Public.validPublic.keySet().toArray());
+        this.ageField = new JTextField();
         this.notesField = new ArrayList<JTextField>();
         this.notesField.add(new JTextField());
         this.gameplayField = new JTextField();
@@ -118,7 +120,8 @@ public class FillInfosView extends JPanel {
 
         String shortDescription = this.shortDescriptionField.getText();
         String dpublic = (String) this.publicField.getSelectedItem();
-
+        String age = this.ageField.getText();
+        
         ArrayList<String> notes = new ArrayList<String>();
         for (JTextField textField : this.notesField) {
             notes.add(textField.getText());
@@ -128,7 +131,7 @@ public class FillInfosView extends JPanel {
         String gameRules = this.gameRulesField.getText();
 
         this.controller.generate(year, title, authors, categories,
-                shortDescription, dpublic, notes, gamePlay, gameRules);
+                shortDescription, dpublic, age, notes, gamePlay, gameRules);
 
     }
 
@@ -144,6 +147,7 @@ public class FillInfosView extends JPanel {
         JLabel categoriesLabel = new JLabel("Type de jeu: ");
         JLabel shortdescriptionLabel = new JLabel("Courte description: ");
         JLabel publicLabel = new JLabel("Public : ");
+        JLabel ageLabel = new JLabel("Age : ");
         JLabel notesLabel = new JLabel("Notes :");
         JLabel gameplayLabel = new JLabel("Gameplay :");
         JLabel gamerulesLabel = new JLabel("Règles du jeu: ");
@@ -229,6 +233,8 @@ public class FillInfosView extends JPanel {
         gridy = createEntry(shortdescriptionLabel, this.shortDescriptionField,
                 gridy, form);
         gridy = createEntry(publicLabel, this.publicField, gridy, form);
+        gridy = createEntry(ageLabel, this.ageField,
+                gridy, form);
         gridy = createEntries(notesLabel, this.notesField, gridy, form);
 
         c.gridx = 1;
