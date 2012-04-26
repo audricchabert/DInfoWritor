@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
+import org.jdom.CDATA;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
+import fr.unice.polytech.devint.dinfowritor.models.GameState;
 import fr.unice.polytech.devint.dinfowritor.views.FillInfosView;
 
 @SuppressWarnings("serial")
@@ -52,6 +54,7 @@ public class WriteInfoController extends JFrame {
         Element xmlCategories = new Element("gamecategories");
         Element xmlShortDescription = new Element("shortdescription");
         Element xmlPublic = new Element("public");
+        Element xmlGameState = new Element("gamestate");
         Element xmlAge = new Element("age");
         Element xmlTitle = new Element("title");
         Element xmlAuthors = new Element("authors");
@@ -59,33 +62,35 @@ public class WriteInfoController extends JFrame {
         Element xmlGameplay = new Element("gameplay");
         Element xmlGamerules = new Element("gamerules");
 
-        xmlYear.setText(year);
+        xmlYear.addContent(new CDATA(year));
         for (String category : categories) {
             Element xmlCategory = new Element("gamecategory");
-            xmlCategory.setText(category);
+            xmlCategory.addContent(new CDATA(category));
             xmlCategories.addContent(xmlCategory);
         }
-        xmlShortDescription.setText(shortDescription);
-        xmlPublic.setText(dpublic);
-        xmlAge.setText(age);
-        xmlTitle.setText(title);
+        xmlShortDescription.addContent(new CDATA(shortDescription));
+        xmlPublic.addContent(new CDATA(dpublic));
+        xmlGameState.addContent(new CDATA(GameState.OK.toString()));
+        xmlAge.addContent(new CDATA(age));
+        xmlTitle.addContent(new CDATA(title));
         for (String author : authors) {
             Element xmlAuthor = new Element("author");
-            xmlAuthor.setText(author);
+            xmlAuthor.addContent(new CDATA(author));
             xmlAuthors.addContent(xmlAuthor);
         }
         for (String note : notes) {
             Element xmlNote = new Element("note");
-            xmlNote.setText(note);
+            xmlNote.addContent(new CDATA(note));
             xmlNotes.addContent(xmlNote);
         }
-        xmlGameplay.setText(gamePlay);
-        xmlGamerules.setText(gameRules);
+        xmlGameplay.addContent(new CDATA(gamePlay));
+        xmlGamerules.addContent(new CDATA(gameRules));
         
         xmlRoot.addContent(xmlYear);
         xmlRoot.addContent(xmlCategories);
         xmlRoot.addContent(xmlShortDescription);
         xmlRoot.addContent(xmlPublic);
+        xmlRoot.addContent(xmlGameState);
         xmlRoot.addContent(xmlAge);
         xmlRoot.addContent(xmlTitle);
         xmlRoot.addContent(xmlAuthors);
