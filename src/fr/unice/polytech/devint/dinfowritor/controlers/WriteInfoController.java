@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.jdom.CDATA;
 import org.jdom.Document;
@@ -62,12 +62,22 @@ public class WriteInfoController extends JFrame {
         Element xmlGameplay = new Element("gameplay");
         Element xmlGamerules = new Element("gamerules");
 
+
         xmlYear.addContent(new CDATA(year));
+
+        //test pas obligatoire, il y a toujours une catégorie de jeu par défaut
+        if(categories.size()==0){
+            fiw.showMessage("Erreur : Vous n'avez pas entré de catégories de jeu, il en faut au moins une ");//+Integer.toString(xmlCategories.getText().length()));
+            return;
+        }
+
         for (String category : categories) {
             Element xmlCategory = new Element("gamecategory");
             xmlCategory.addContent(new CDATA(category));
             xmlCategories.addContent(xmlCategory);
         }
+
+
         xmlShortDescription.addContent(new CDATA(shortDescription));
         xmlPublic.addContent(new CDATA(dpublic));
         xmlGameState.addContent(new CDATA(GameState.OK.toString()));
@@ -88,6 +98,8 @@ public class WriteInfoController extends JFrame {
         
         xmlRoot.addContent(xmlYear);
         xmlRoot.addContent(xmlCategories);
+
+
         xmlRoot.addContent(xmlShortDescription);
         xmlRoot.addContent(xmlPublic);
         xmlRoot.addContent(xmlGameState);
@@ -107,5 +119,6 @@ public class WriteInfoController extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        fiw.showMessage("génération terminée sans erreur");
     }
 }

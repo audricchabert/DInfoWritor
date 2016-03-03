@@ -2,12 +2,7 @@ package fr.unice.polytech.devint.dinfowritor.views;
 
 import java.util.ArrayList;
 
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import java.awt.Button;
 import java.awt.GridBagLayout;
@@ -149,8 +144,21 @@ public class FillInfosView extends JPanel {
         JLabel publicLabel = new JLabel("Public : ");
         JLabel ageLabel = new JLabel("Age : ");
         JLabel notesLabel = new JLabel("Notes :");
-        JLabel gameplayLabel = new JLabel("Gameplay :");
+        JLabel longDescriptionLabel = new JLabel("Description longue :");
         JLabel gamerulesLabel = new JLabel("Règles du jeu: ");
+
+        JLabel yearDescriptionLabel = new JLabel("l'année de la publication du jeu");
+        JLabel titleDescriptionLabel = new JLabel("le titre du jeu ");
+        JLabel authorsDescriptionLabel = new JLabel("chaque auteur du jeu. utilisez le bouton \"ajouter un auteur\" ");
+        JLabel categoriesDescriptionLabel = new JLabel("indiquez le ou les catégories de jeu. Utilisez le bouton \"ajouter un auteur\"  ");
+        JLabel shortDescriptionDescriptionLabel = new JLabel("une courte description qui sera visible sur le site des jeux DeViNT");
+        JLabel publicDescriptionLabel = new JLabel("le public visé, Mal-Voyants, Non-Voyants ou les deux");
+        JLabel ageDescriptionLabel = new JLabel("l'age recommandé pour jouer au jeu");
+        JLabel notesDescriptionLabel = new JLabel("bugs connus, limites du jeu, notes par rapport au péripheriques, ressources externes spécifiques... ");
+        JLabel longDescriptionDescriptionLabel = new JLabel("La description longue");
+        JLabel gameRulesDescriptionLabel = new JLabel("les règles du jeu telles qu'elles seront affichées sur le site des projets DeViNT");
+
+
         Button addAuthorButton = new Button("Ajouter un auteur");
         addAuthorButton.addActionListener(new ActionListener() {
 
@@ -203,15 +211,36 @@ public class FillInfosView extends JPanel {
 
         int gridy = 0;
 
-        gridy = createEntry(yearLabel, this.yearField, gridy, form);
+
+        //form init
         gridy = createEntry(titleLabel, this.titleField, gridy, form);
+
+        c.gridx = 1;
+        c.gridy = gridy-1;
+        c.gridwidth = 1;
+        form.add(titleDescriptionLabel, c);
+
         gridy = createEntries(authorsLabel, this.authorsField, gridy, form);
+        c.gridx = 1;
+        c.gridy = gridy-1;
+        c.gridwidth = 1;
+        form.add(authorsDescriptionLabel, c);
+
+        gridy = createEntry(yearLabel, this.yearField, gridy, form);
+        c.gridx = 1;
+        c.gridy = gridy-1;
+        c.gridwidth = 1;
+        form.add(yearDescriptionLabel, c);
+
+
 
         c.gridx = 1;
         c.gridy = gridy;
         c.gridwidth = 1;
         c.insets = new Insets(3, 5, 0, 5);
         form.add(addAuthorButton, c);
+
+
         c.gridx = 2;
         c.gridwidth = GridBagConstraints.REMAINDER;
         form.add(removeAuthorButton, c);
@@ -228,14 +257,38 @@ public class FillInfosView extends JPanel {
         c.gridx = 2;
         c.gridwidth = GridBagConstraints.REMAINDER;
         form.add(removeCategoryButton, c);
-        gridy++;
 
+
+        gridy++;
         gridy = createEntry(shortdescriptionLabel, this.shortDescriptionField,
                 gridy, form);
+
+
+        c.gridx = 1;
+        c.gridy = gridy-1;
+        c.gridwidth = 1;
+        form.add(shortDescriptionDescriptionLabel, c);
+
         gridy = createEntry(publicLabel, this.publicField, gridy, form);
+
+
+        c.gridx = 1;
+        c.gridy = gridy-1;
+        c.gridwidth = 1;
+        form.add(publicDescriptionLabel, c);
+
         gridy = createEntry(ageLabel, this.ageField,
                 gridy, form);
+        c.gridx = 1;
+        c.gridy = gridy-1;
+        c.gridwidth = 1;
+        form.add(ageDescriptionLabel, c);
+
         gridy = createEntries(notesLabel, this.notesField, gridy, form);
+        c.gridx = 1;
+        c.gridy = gridy-1;
+        c.gridwidth = 1;
+        form.add(notesDescriptionLabel, c);
 
         c.gridx = 1;
         c.gridy = gridy;
@@ -247,8 +300,22 @@ public class FillInfosView extends JPanel {
         form.add(removeNoteButton, c);
         gridy++;
 
-        gridy = createEntry(gameplayLabel, this.gameplayField, gridy, form);
+
+
+        gridy = createEntry(longDescriptionLabel, this.gameplayField, gridy, form);
+        c.gridx = 1;
+        c.gridy = gridy-1;
+        c.gridwidth = 1;
+        form.add(longDescriptionDescriptionLabel, c);
+
+
+        gridy++;
         gridy = createEntry(gamerulesLabel, this.gameRulesField, gridy, form);
+        c.gridx = 1;
+        c.gridy = gridy-1;
+        c.gridwidth = 1;
+        form.add(gameRulesDescriptionLabel, c);
+
 
         return form;
     }
@@ -363,6 +430,10 @@ public class FillInfosView extends JPanel {
         }
 
         return gridy;
+    }
+
+    public void showMessage(String message){
+        JOptionPane.showMessageDialog(null, message);
     }
 
     private int createEntriesCBox(JLabel label, ArrayList<JComboBox> cboxes,
